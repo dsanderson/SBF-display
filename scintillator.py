@@ -41,9 +41,10 @@ class GraphicsTest(SampleBase):
         changed_pixels_indecies = []
         while True:
             i = random.randint(0, len(self.pixels))
-            i0 = changed_pixels_indecies.pop(0)
-            r, g, b = self.pixels[i0][1]
-            graphics.SetPixel(self.pixels[i0][0][0], self.pixels[i0][0][1], r, g, b)
+            if len(changed_pixels_indecies)>100:
+                i0 = changed_pixels_indecies.pop(0)
+                r, g, b = self.pixels[i0][1]
+                graphics.SetPixel(self.pixels[i0][0][0], self.pixels[i0][0][1], r, g, b)
             r, g, b = randomize_color(self.pixels[i][1])
             graphics.SetPixel(self.pixels[i][0][0], self.pixels[i][0][1], r, g, b)
             changed_pixels_indecies.push(i)
